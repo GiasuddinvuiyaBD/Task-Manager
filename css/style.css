@@ -1,0 +1,339 @@
+body 
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container 
+{
+	/*position: relative;*/
+}
+#head 
+{
+    margin: 6px 0px;
+    font-size: 25px;
+    text-align: center;
+    font-family: inherit;
+    visibility: visible;
+}
+.sub-container 
+{
+    width: 400px;
+    margin: 10px 0 0 30px;
+    padding: 12px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border: 1px solid #9e9e9ed6;
+    border-radius: 5px;
+    box-shadow: -1px 0px 0px 0px #9e9e9e;
+}
+
+.title,
+.start-date
+{
+	float: left;
+}
+.sub-title,
+.end-date
+{
+	overflow: hidden;
+}
+
+
+.start-date input[type="date"]
+{
+	width: 110%;
+    margin: 5px 0;
+    padding: 8px 7px;
+    font-size: 15px;
+    border: 1px solid #9e9e9ec4;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.end-date input[type="date"]
+{
+	width: 88%;
+    margin: 5px 0 5px 26px;
+    padding: 8px 7px;
+    font-size: 15px;
+    border: 1px solid #9e9e9ec4;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.start-date label
+{
+	font-size: 18px;
+    margin: 2px 2px;
+    font-family: system-ui;
+}
+.end-date label
+{
+	font-size: 18px;
+    margin: 2px 0px 2px 28px;
+    font-family: system-ui;
+}
+
+#assigned
+{
+    font-size: 18px;
+    font-family: system-ui;
+    color: #263238;
+}
+
+p[for="title"],
+p[for="sub-title"],p,label 
+{
+    color: #263238;
+}
+.sub-container form p
+{
+    font-size: 18px;
+    margin: 2px 4px;
+    /*color: gray;*/
+    font-family: system-ui;
+}
+.sub-container form #title,
+.sub-container form #sub-title
+{
+	width: 96%;
+} 
+
+
+.sub-container form input[type="text"], 
+/*.sub-container form input[type="date"], */
+.sub-container form input[type="submit"] 
+{
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px 7px;
+    font-size: 15px;
+    border: 1px solid #9e9e9ec4;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.sub-container form input[type="text"]:focus 
+{
+    /*border: 1px solid #263cc0;*/
+    border: 1px solid #263cc0a1;
+    transition-duration: 0.4s;
+}
+
+/*submit button start here*/
+#submitBtn 
+{
+    margin-top: 12px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background: #1a237e;
+}
+
+#submitBtn:focus
+{
+	border: 1px solid #fff;
+	border-radius: 4px;
+}
+
+
+
+/*users item start here*/
+.add-item 
+{
+    position: absolute;
+    top: 100%;
+    left: 55%;
+    transform: translate(-50%,-50%);
+}
+.all-item 
+{
+    margin: 10px;
+    padding: 10px;
+    width: 580px;
+    border-bottom: 1px solid #9e9e9eab;
+}
+
+.total-count 
+{
+    border-bottom: 1px solid #9e9e9e69;
+}
+
+.total  p,
+.new   p,
+.prograss  p
+{
+    font-size: 18px;
+}
+
+.total 
+{
+    margin: 0 5px 0 1px;
+    float: left;
+}
+
+.new 
+{
+    margin: 0  26%;
+    overflow: hidden;
+    float: left;
+}
+.prograss 
+{
+    margin: 0 5px 0 10px;
+    overflow: hidden;
+}
+
+/*sub-title start here*/
+.unique-id
+{
+    margin-right: 10px;
+    float: left;
+}
+.title
+{
+   margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+.priority
+{
+    margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+.statusw
+{
+   margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+
+.date
+{
+    margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+.assigned
+{
+    margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+.actions
+{
+    margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+
+.unique-id p,
+.title p,
+.priority p,
+.statusw p,
+.date p,
+.assigned p,
+.actions 
+{
+    color: #263238;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+/*value of sub-title*/
+
+.id-value 
+{
+    margin-right: 10px;
+    float: left;
+}
+
+.title-value 
+{
+    margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+.status 
+{
+    margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+
+.prograss-value 
+{
+    margin-right: 35px;
+    float: left;
+    overflow: hidden;
+}
+.date-value 
+{
+    margin-right: 32px;
+    float: left;
+    overflow: hidden;
+}
+
+.assigned-value 
+{
+    margin-right: 20px;
+    float: left;
+    overflow: hidden;
+}
+.icon 
+{
+    float: left;
+    overflow: hidden;
+}
+
+.id-value p,
+.title-value p,
+.status p,
+.prograss-value p,
+.date-value p,
+.assigned-value p
+{
+    color: #000;
+    margin: 25px 0;
+    font-size: 16px;
+}
+
+.status p 
+{
+    padding: 2px 8px;
+    color: #fff;
+    background: blue;
+    font-size: 16px;
+    border-radius: 12px;
+}
+.icon i
+{
+    font-size: 16;
+    margin: 10px 0;
+    margin-right: 10px;
+}
+.updated 
+{
+    color: blue;
+}
+.check-mark
+{
+    color: green;
+}
+
+.delete 
+{
+    color: red;
+}
+
+
+

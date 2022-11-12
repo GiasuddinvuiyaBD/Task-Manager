@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task Manager</title>
+</head>
+<body>
+	<div class="container">
+		<div class="sub-container">
+			<head>
+				<h2 id="head">Taks Manager</h2>
+				<hr>
+			</head>
+			<form action="#">
+				<div class="title">
+					<p for="title">Title</p>
+					<input type="text" id="title" placeholder="Enter Title" autocomplete="off">
+				</div>
+				<div class="sub-title">
+					<p for="sub-title">Sub Title</p>
+					<input type="text" id="sub-title" placeholder="Enter Sub Title" autocomplete="off">
+				</div>
+				<label for="assigned" id="assigned">Assigned To</label>
+				<input type="text" id="assigneds" placeholder="Enter name whom you have to ass: " autocomplete="off">
+				<div class="start-date">
+					<label for="start">Start</label>
+					<input type="date" id="start" placeholder="Dec 10 2022" autocomplete="off">
+				</div>
+				<div class="end-date">
+					<label for="end">End</label>
+					<input type="date" id="end" placeholder="Dec 11 2022" autocomplete="off">
+				</div>
+				<p>Priority</p>
+				<input type="radio" id="high" name="priority" value="High"><label for="high">High</label>
+				<input type="radio" id="medium" name="priority" value="Medium"><label for="medium">Medium</label>
+				<input type="radio" id="low" name="priority" value="Low"><label for="low">Low</label>
+
+				<p>Status</p>
+				<input type="radio" id="new" name="status" value="New"><label for="new">New</label>
+				<input type="radio" id="prograss" name="status" value="Prograss"><label for="prograss">In Prograss</label>
+				<input type="radio" id="completed" name="status" value="Completed"><label for="completed">Completed</label>
+
+				<input type="submit" value="Submit" id="submitBtn">
+			</form>
+		</div>
+		 <div class="add-item">
+			<div class="all-item">
+				<!-- total count part start here -->
+				<div class="total-count">
+					<div class="total">
+						<p>Total : <span>20</span></p>
+					</div>
+					<div class="new">
+						<p>New : <span>22</span></p>
+					</div>
+					<div class="prograss">
+						<p>In Prograss : <span>2</span></p>
+					</div>
+				</div>
+				<!-- total count part start here -->
+
+				<!-- sub-title start here -->
+				<div class="sub-title sub-title-heading">
+					<div class="unique-id">
+						<p>ID</p>
+					</div>
+					<div class="title">
+						<p>Title</p>
+					</div>
+					<div class="priority">
+						<p>Priority</p>
+					</div>
+					<div class="statusw">
+						<p>Status</p>
+					</div>
+					<div class="date">
+						<p>Due Date</p>
+					</div>
+					<div class="assigned">
+						<p>Assigned To</p>
+					</div>
+					<div class="actions">
+						<p>Action</p>
+					</div>
+				</div>
+				<!-- sub-title start here -->
+
+				<!-- setting value to ui -->
+				<div class="item-values">
+					<div class="id-value">
+						<p>1</p>
+					</div>
+					<div class="title-value">
+						<p>School</p>
+					</div>
+					<div class="status">
+						<p>High</p>
+					</div>
+					<div class="prograss-value">
+						<p>In Prograce</p>
+					</div>
+					<div class="date-value">
+						<p>2022-11-10</p>
+					</div>
+					<div class="assigned-value">
+						<p>Najim vuiya</p>
+					</div>
+					<div class="icon">
+						<p>
+							<i class="fa-sharp fa-solid fa-pen-to-square updated"></i>
+							<i class="fa-solid fa-square-check check-mark"></i>
+							<i class="fa-solid fa-trash delete"></i>
+						</p>
+					</div>
+				</div>
+				<!-- setting value to ui -->
+			</div>
+		</div> 
+	</div>
+	<script src="js/script.js"></script>	
+</body>
+</html>
