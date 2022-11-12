@@ -9,6 +9,9 @@ const endDateElm = document.querySelector('#end');
 const allItemElm = document.querySelector('.all-item');
 const subTitleHeadingElm = document.querySelector('.sub-title-heading');
 
+const addItemElm = document.querySelector('.all-item');
+const dynamicValue = document.querySelector('.add-item');
+
 // priority start here 
 let prorityArr = document.querySelectorAll('input[name="priority"]');
 // status 
@@ -43,6 +46,7 @@ submitBtnElm.addEventListener('submit',(evt) =>
 		status
 	})
 
+	console.log(dataBase)
 	// set item to ui
 	setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 	
@@ -78,7 +82,6 @@ function validateForm()
 function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 {
 	let htmlTemplete = `
-			
 				<div class="total-count">
 					<div class="total">
 						<p>Total : <span>20</span></p>
@@ -119,7 +122,6 @@ function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 	`;
 	allItemElm.innerHTML = htmlTemplete;
 
-	
 	let settingValuesTem = `
 				<div class="item-values item-${id}">
 					<div class="id-value">
@@ -149,7 +151,7 @@ function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 					</div>
 				</div>
 	`;
-	// allItemElm.insertAdjacentHTML('afterbegin',settingValuesTem);
+	dynamicValue.insertAdjacentHTML('beforeend',settingValuesTem);
 }
 
 // resiving value form input element

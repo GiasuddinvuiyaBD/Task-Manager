@@ -335,5 +335,31 @@ p[for="sub-title"],p,label
     color: red;
 }
 
+.add-item 
+{
+    border: 1px solid #000;
+}
 
+.all-item
+{
+    border: 1px solid #000;
+}
 
+.sub-title 
+{
+    border: 1px solid #000;
+}
+.adding-dynamic-value
+{
+    border: 1px solid green;
+}
+
+.item-values 
+{
+    border: 1px solid red;
+}
+
+.id-value 
+{
+    border: 1px solid #000;
+}
