@@ -27,31 +27,49 @@ submitBtnElm.addEventListener('submit',(evt) =>
 	// resiving value form input element
 	const [title,subTitle,name,startDate,endDate] = resiveInputValue();
 	// form validaatin  start here 
-	const [priority,status] = validateForm();
+	const [priority,status] = radioBtn();
+	// form validation
+	const isError = validateForm(title,subTitle,name,startDate,endDate,priority,status);
+	// console.log(isError)
+	// console.log(priority)
 
-	// making unique id
-	let id = dataBase.length + 1;
-	// set item to data base
-	dataBase.push(
+	if(!isError)
 	{
-		id,
-		title,
-		subTitle, 
-		name,
-		startDate, 
-		endDate,
-		priority,
-		status
-	})
-
-	console.log(dataBase)
-	// set item to ui
-	setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status);
-
-	// reset input field 
-	resetInput(priority,status)
-	
+		// making unique id
+		let id = dataBase.length + 1;
+		// set item to data base
+		dataBase.push(
+		{
+			id,
+			title,
+			subTitle, 
+			name,
+			startDate, 
+			endDate,
+			priority,
+			status
+		});
+		// set item to ui
+		setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status);
+		// reset input field 
+		resetInput(priority,status);
+	}
 });
+
+// form validation
+function validateForm(title,subTitle,name,startDate,endDate,priority,status)
+{
+	let validate = false;
+
+	// console.log(priority)
+	if(title === '' || subTitle === '' || name === '' || startDate === '' || endDate === '' || priority === false || status === false)
+	{
+		// console.log('Please fill up the input field');
+		alert('Opps!! Please fill up the input field');
+		validate = true;
+	}
+	return validate;
+}
 // reset input field 
 function resetInput(priority,status)
 {
@@ -61,11 +79,12 @@ function resetInput(priority,status)
 	startDateElm.value = '';
 	endDateElm.value = '';
 	allItemElm.value = '';
+
 	priority = '';
 	status = '';
 }
 // form validation
-function validateForm()
+function radioBtn()
 {
 	let priority = false;
 	let status = false;
