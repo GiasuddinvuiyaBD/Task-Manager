@@ -11,12 +11,10 @@ const subTitleHeadingElm = document.querySelector('.sub-title-heading');
 
 const addItemElm = document.querySelector('.all-item');
 const dynamicValue = document.querySelector('.add-item');
-
 // priority start here 
 let prorityArr = document.querySelectorAll('input[name="priority"]');
 // status 
 let statusArr = document.querySelectorAll('input[name="status"]');
-
 // submit btn 
 const submitBtnElm = document.querySelector('form');
 // main data storage
@@ -48,9 +46,24 @@ submitBtnElm.addEventListener('submit',(evt) =>
 
 	console.log(dataBase)
 	// set item to ui
-	setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
+	setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status);
+
+	// reset input field 
+	resetInput(priority,status)
 	
 });
+// reset input field 
+function resetInput(priority,status)
+{
+	titleElm.value = '';
+	subTitleElm.value = '';
+	assignedElm.value = '';
+	startDateElm.value = '';
+	endDateElm.value = '';
+	allItemElm.value = '';
+	priority = '';
+	status = '';
+}
 // form validation
 function validateForm()
 {
@@ -127,6 +140,7 @@ function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 					<div class="my-last-testing">
 						<span id="unique-id">${id}</span>
 						<span id="titleValues">${title}</span>
+						<span id="subtitleValues">${subTitle}</span>
 						<span id="statusValues">${priority}</span>
 						<span id="prograssValues">${status}</span>
 						<span id="dateValues">${endDate}</span>
@@ -141,7 +155,6 @@ function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 	`;
 	dynamicValue.insertAdjacentHTML('beforeend',settingValuesTem);
 }
-
 // resiving value form input element
 function resiveInputValue() 
 {
@@ -153,45 +166,5 @@ function resiveInputValue()
 
 	return [title,subTitle,name,startDate,endDate];
 }
-
-/*
-
-
-
-
-<div class="id-value">
-						<p>${id}</p>
-					</div>
-					<div class="title-value">
-						<p>${title}</p>
-					</div>
-					<div class="status">
-						<p>${priority}</p>
-					</div>
-					<div class="prograss-value">
-						<p>${status}</p>
-					</div>
-					<div class="date-value">
-						<p>${endDate}</p>
-					</div>
-					<div class="assigned-value">
-						<p>${name}</p>
-					</div>
-					<div class="icon">
-						<p>
-							<i class="fa-sharp fa-solid fa-pen-to-square updated"></i>
-							<i class="fa-solid fa-square-check check-mark"></i>
-							<i class="fa-solid fa-trash delete"></i>
-						</p>
-					</div>
-
-
-
-
-
-
-*/
-
-
 
 
