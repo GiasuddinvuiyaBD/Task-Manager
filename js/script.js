@@ -124,7 +124,42 @@ function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 
 	let settingValuesTem = `
 				<div class="item-values item-${id}">
-					<div class="id-value">
+					<div class="my-last-testing">
+						<span id="unique-id">${id}</span>
+						<span id="titleValues">${title}</span>
+						<span id="statusValues">${priority}</span>
+						<span id="prograssValues">${status}</span>
+						<span id="dateValues">${endDate}</span>
+						<span id="assingValues">${name}</span>
+						<span id="icons">
+							<i class="fa-sharp fa-solid fa-pen-to-square updated"></i>
+							<i class="fa-solid fa-square-check check-mark"></i>
+							<i class="fa-solid fa-trash delete"></i>
+						</span>
+					</div>
+				</div>
+	`;
+	dynamicValue.insertAdjacentHTML('beforeend',settingValuesTem);
+}
+
+// resiving value form input element
+function resiveInputValue() 
+{
+	let title = titleElm.value;
+	let subTitle = subTitleElm.value;
+	let name = assignedElm.value;
+	let startDate = startDateElm.value;
+	let endDate = endDateElm.value;
+
+	return [title,subTitle,name,startDate,endDate];
+}
+
+/*
+
+
+
+
+<div class="id-value">
 						<p>${id}</p>
 					</div>
 					<div class="title-value">
@@ -149,24 +184,13 @@ function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 							<i class="fa-solid fa-trash delete"></i>
 						</p>
 					</div>
-				</div>
-	`;
-	dynamicValue.insertAdjacentHTML('beforeend',settingValuesTem);
-}
-
-// resiving value form input element
-function resiveInputValue() 
-{
-	let title = titleElm.value;
-	let subTitle = subTitleElm.value;
-	let name = assignedElm.value;
-	let startDate = startDateElm.value;
-	let endDate = endDateElm.value;
-
-	return [title,subTitle,name,startDate,endDate];
-}
 
 
+
+
+
+
+*/
 
 
 
