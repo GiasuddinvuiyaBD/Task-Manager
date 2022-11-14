@@ -20,7 +20,7 @@ const submitBtnElm = document.querySelector('form');
 
 // main data storage
 let dataBase = JSON.parse(localStorage.getItem('user-data')) || [];
-console.log(dataBase)
+// console.log(dataBase)
 
 
 submitBtnElm.addEventListener('submit',(evt) => 
@@ -74,19 +74,35 @@ dynamicValue.addEventListener('click',(evt) =>
 		// finding uinque id
 		const id = finding_unique_id(evt);
 		// remove item form database 
-		removeItemFromDataBase(id)
-		
-	}
+		removeItemFromDataBase(id);
+		// remove item to ui
+		removeItemToUI(evt);
+		// remove item from localStorage
+		removeItemToLocalStorage(id)
+	} 
 
 });
+
+function removeItemToLocalStorage(id)
+{
+	// getting data from localStorage
+	let getData = JSON.parse(localStorage.getItem('user-data'));
+	// removing data to localStorage
+	let newResult = getData.filter((product) => product.uniquId !== id);
+	// setting new data to localStorage
+	localStorage.setItem('user-data',JSON.stringify(newResult))
+}
+// remove item to ui
+function removeItemToUI(evt) 
+{
+	console.log(evt.target.parentElement.parentElement.parentElement.remove())
+}
 // remove item form database 
 function removeItemFromDataBase(id)
 {
-	let removeDataFromDtb = dataBase.find((product) => (product.uniquId === id));
-	// console.log(removeDataFromDtb)
-
+	dataBase = dataBase.filter((product) => (product.uniquId !== id));
+	console.log(dataBase)
 }
-
 
 // finding uinque id
 function finding_unique_id(evt)
