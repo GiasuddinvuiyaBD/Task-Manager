@@ -18,7 +18,8 @@ let statusArr = document.querySelectorAll('input[name="status"]');
 // submit btn 
 const submitBtnElm = document.querySelector('form');
 // main data storage
-const dataBase = [];
+const dataBase = JSON.parse(localStorage.getItem('user-data')) || [];
+
 
 
 submitBtnElm.addEventListener('submit',(evt) => 
@@ -53,7 +54,12 @@ submitBtnElm.addEventListener('submit',(evt) =>
 		setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status);
 		// reset input field 
 		resetInput(priority,status);
+
+		// add item to localStorage 
+		localStorage.setItem('user-data',JSON.stringify(dataBase))
 	}
+
+
 });
 
 // form validation
@@ -185,5 +191,77 @@ function resiveInputValue()
 
 	return [title,subTitle,name,startDate,endDate];
 }
+
+// show localStorage item to ui 
+function show(storageData)
+{
+	storageData.forEach((data) => 
+	{
+			let htmlTemplete = `
+				<div class="total-count">
+					<div class="total">
+						<p>Total : <span>20</span></p>
+					</div>
+					<div class="new">
+						<p>New : <span>22</span></p>
+					</div>
+					<div class="prograss">
+						<p>In Prograss : <span>2</span></p>
+					</div>
+				</div>
+				
+				
+				<div class="sub-title">
+					<div class="unique-id">
+						<p>ID</p>
+					</div>
+					<div class="title">
+						<p>Title</p>
+					</div>
+					<div class="priority">
+						<p>Priority</p>
+					</div>
+					<div class="statusw">
+						<p>Status</p>
+					</div>
+					<div class="date">
+						<p>Due Date</p>
+					</div>
+					<div class="assigned">
+						<p>Assigned To</p>
+					</div>
+					<div class="actions">
+						<p>Action</p>
+					</div>
+				</div>
+				
+	`;
+	allItemElm.innerHTML = htmlTemplete;
+	// user data
+	let settingValuesTem = `
+				<div class="item-values item-${data.id}">
+					<div class="my-last-testing">
+						<span id="unique-id">${data.id}</span>
+						<span id="titleValues">${data.title}</span>
+						<span id="subtitleValues">${data.subTitle}</span>
+						<span id="statusValues">${data.priority}</span>
+						<span id="prograssValues">${data.status}</span>
+						<span id="dateValues">${data.endDate}</span>
+						<span id="assingValues">${data.name}</span>
+						<span id="icons">
+							<i class="fa-sharp fa-solid fa-pen-to-square updated"></i>
+							<i class="fa-solid fa-square-check check-mark"></i>
+							<i class="fa-solid fa-trash delete"></i>
+						</span>
+					</div>
+				</div>
+	`;
+	dynamicValue.insertAdjacentHTML('beforeend',settingValuesTem);
+	})
+}
+show(dataBase);
+
+
+
 
 
