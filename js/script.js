@@ -17,9 +17,10 @@ let prorityArr = document.querySelectorAll('input[name="priority"]');
 let statusArr = document.querySelectorAll('input[name="status"]');
 // submit btn 
 const submitBtnElm = document.querySelector('form');
-// main data storage
-const dataBase = JSON.parse(localStorage.getItem('user-data')) || [];
 
+// main data storage
+let dataBase = JSON.parse(localStorage.getItem('user-data')) || [];
+console.log(dataBase)
 
 
 submitBtnElm.addEventListener('submit',(evt) => 
@@ -38,9 +39,11 @@ submitBtnElm.addEventListener('submit',(evt) =>
 	{
 		// making unique id
 		let id = dataBase.length + 1;
+		let uniquId = dataBase.length;
 		// set item to data base
 		dataBase.push(
 		{
+			uniquId,
 			id,
 			title,
 			subTitle, 
@@ -51,16 +54,46 @@ submitBtnElm.addEventListener('submit',(evt) =>
 			status
 		});
 		// set item to ui
-		setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status);
+		setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,status);
 		// reset input field 
 		resetInput(priority,status);
 
 		// add item to localStorage 
 		localStorage.setItem('user-data',JSON.stringify(dataBase))
 	}
+});
 
+
+// delete item start here 
+dynamicValue.addEventListener('click',(evt) => 
+{
+	evt.preventDefault()
+
+	if(evt.target.classList.contains('delete'))
+	{
+		// finding uinque id
+		const id = finding_unique_id(evt);
+		// remove item form database 
+		removeItemFromDataBase(id)
+		
+	}
 
 });
+// remove item form database 
+function removeItemFromDataBase(id)
+{
+	let removeDataFromDtb = dataBase.find((product) => (product.uniquId === id));
+	// console.log(removeDataFromDtb)
+
+}
+
+
+// finding uinque id
+function finding_unique_id(evt)
+{
+	let parent = (evt.target.parentElement.parentElement.parentElement);
+	return Number(parent.classList[1].split('-')[1]);
+}
 
 // form validation
 function validateForm(title,subTitle,name,startDate,endDate,priority,status)
@@ -117,7 +150,7 @@ function radioBtn()
 }
 
 // set item to ui
-function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
+function setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,status)
 {
 	let htmlTemplete = `
 				<div class="total-count">
@@ -161,7 +194,7 @@ function setItemToUI(id,title,subTitle,name,startDate,endDate,priority,status)
 	allItemElm.innerHTML = htmlTemplete;
 
 	let settingValuesTem = `
-				<div class="item-values item-${id}">
+				<div class="item-values item-${uniquId}">
 					<div class="my-last-testing">
 						<span id="unique-id">${id}</span>
 						<span id="titleValues">${title}</span>
@@ -239,7 +272,7 @@ function show(storageData)
 	allItemElm.innerHTML = htmlTemplete;
 	// user data
 	let settingValuesTem = `
-				<div class="item-values item-${data.id}">
+				<div class="item-values item-${data.uniquId}">
 					<div class="my-last-testing">
 						<span id="unique-id">${data.id}</span>
 						<span id="titleValues">${data.title}</span>
