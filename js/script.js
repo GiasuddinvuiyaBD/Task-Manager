@@ -68,20 +68,75 @@ submitBtnElm.addEventListener('submit',(evt) =>
 dynamicValue.addEventListener('click',(evt) => 
 {
 	evt.preventDefault()
-
+	
+	
 	if(evt.target.classList.contains('delete'))
 	{
 		// finding uinque id
-		const id = finding_unique_id(evt);
+		let id = finding_unique_id(evt);
 		// remove item form database 
 		removeItemFromDataBase(id);
 		// remove item to ui
 		removeItemToUI(evt);
 		// remove item from localStorage
 		removeItemToLocalStorage(id)
-	} 
+	}
+
+	if(evt.target.classList.contains('updated'))
+	{
+		// finding uinque id
+		let id = finding_unique_id(evt);
+		
+		// getting unique value from database
+		get_values(id)
+
+	}
+
 
 });
+// populate item to input field  
+function get_values(id)
+{
+	for(let obj of dataBase)
+	{
+		if(obj.uniquId === id)
+		{
+			// getting value form object
+			gettingValue(obj)
+			break;
+		}
+	}
+	
+}
+function gettingValue(obj)
+{
+	
+	let _id = obj.id;
+	let _title = obj.title;
+	let _subTitle = obj.subTitle;
+	let _name = obj.name;
+	let _startDate = obj.startDate;
+	let _endDate = obj.endDate;
+	let _priority = obj.priority;
+	let _status = obj.status;
+
+	// populate item to ui 
+	populate(_id,_title,_subTitle,_name,_startDate,_endDate,_priority,_status)
+
+}
+// populate item to ui 
+function populate(_id,_title,_subTitle,_name,_startDate,_endDate,_priority,_status)
+{
+	titleElm.value = _title;
+	subTitleElm.value = _subTitle;
+	assignedElm.value = _name;
+	startDateElm.value = _startDate;
+	endDateElm.value = _endDate;
+	// allItemElm.value = ;
+
+	priority = _priority;
+	status = _status;
+}
 
 function removeItemToLocalStorage(id)
 {
@@ -95,13 +150,13 @@ function removeItemToLocalStorage(id)
 // remove item to ui
 function removeItemToUI(evt) 
 {
-	console.log(evt.target.parentElement.parentElement.parentElement.remove())
+	evt.target.parentElement.parentElement.parentElement.remove();
 }
 // remove item form database 
 function removeItemFromDataBase(id)
 {
 	dataBase = dataBase.filter((product) => (product.uniquId !== id));
-	console.log(dataBase)
+	// console.log(dataBase)
 }
 
 // finding uinque id
@@ -115,8 +170,6 @@ function finding_unique_id(evt)
 function validateForm(title,subTitle,name,startDate,endDate,priority,status)
 {
 	let validate = false;
-
-	// console.log(priority)
 	if(title === '' || subTitle === '' || name === '' || startDate === '' || endDate === '' || priority === false || status === false)
 	{
 		// console.log('Please fill up the input field');

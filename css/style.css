@@ -375,6 +375,7 @@ p[for="sub-title"],p,label
 #icons i 
 {
     margin: 0 3px;
+    cursor: pointer;
 }
 #statusValues 
 {
