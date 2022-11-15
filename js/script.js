@@ -18,6 +18,10 @@ let statusArr = document.querySelectorAll('input[name="status"]');
 // submit btn 
 const submitBtnElm = document.querySelector('form');
 
+const updateBtnElm = document.querySelector('#submitBtn');
+
+
+
 // main data storage
 let dataBase = JSON.parse(localStorage.getItem('user-data')) || [];
 // console.log(dataBase)
@@ -26,6 +30,46 @@ let dataBase = JSON.parse(localStorage.getItem('user-data')) || [];
 submitBtnElm.addEventListener('submit',(evt) => 
 {
 	evt.preventDefault();
+	// calling initiazing fun
+	init() 
+});
+
+// delete item start here 
+dynamicValue.addEventListener('click',(evt) => 
+{
+	evt.preventDefault()
+	
+	if(evt.target.classList.contains('delete'))
+	{
+		// finding uinque id
+		let id = finding_unique_id(evt);
+		// remove item form database 
+		removeItemFromDataBase(id);
+		// remove item to ui
+		removeItemToUI(evt);
+		// remove item from localStorage
+		removeItemToLocalStorage(id)
+		
+	}
+
+	if(evt.target.classList.contains('updated'))
+	{
+		// finding uinque id
+		let id = finding_unique_id(evt);
+		// getting unique value from database
+		get_values(id);
+		// remove item form database 
+		removeItemFromDataBase(id);
+		// remove item to ui
+		removeItemToUI(evt);
+		// remove item from localStorage
+		removeItemToLocalStorage(id)
+	}
+});
+
+
+function init() 
+{
 	// resiving value form input element
 	const [title,subTitle,name,startDate,endDate] = resiveInputValue();
 	// form validaatin  start here 
@@ -60,40 +104,14 @@ submitBtnElm.addEventListener('submit',(evt) =>
 
 		// add item to localStorage 
 		localStorage.setItem('user-data',JSON.stringify(dataBase))
-	}
-});
-
-
-// delete item start here 
-dynamicValue.addEventListener('click',(evt) => 
-{
-	evt.preventDefault()
-	
-	
-	if(evt.target.classList.contains('delete'))
-	{
-		// finding uinque id
-		let id = finding_unique_id(evt);
-		// remove item form database 
-		removeItemFromDataBase(id);
-		// remove item to ui
-		removeItemToUI(evt);
-		// remove item from localStorage
-		removeItemToLocalStorage(id)
-	}
-
-	if(evt.target.classList.contains('updated'))
-	{
-		// finding uinque id
-		let id = finding_unique_id(evt);
-		
-		// getting unique value from database
-		get_values(id)
+		// after submitting
+		updateBtnElm.value = 'Submit'
+		updateBtnElm.style.backgroundColor = '#1a237e';
 
 	}
+}
 
 
-});
 // populate item to input field  
 function get_values(id)
 {
@@ -134,8 +152,11 @@ function populate(_id,_title,_subTitle,_name,_startDate,_endDate,_priority,_stat
 	endDateElm.value = _endDate;
 	// allItemElm.value = ;
 
-	priority = _priority;
-	status = _status;
+	// making upading button 
+	updateBtnElm.value = 'Update';
+	updateBtnElm.setAttribute('class',`item-${_id}`);
+	updateBtnElm.style.backgroundColor = 'blue';
+	
 }
 
 function removeItemToLocalStorage(id)

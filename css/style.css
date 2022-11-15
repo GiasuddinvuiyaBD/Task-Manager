@@ -386,4 +386,24 @@ p[for="sub-title"],p,label
     padding: 3px 7px;
 }
 
+/*update button desing start here*/
 
+
+
+/*submit button start here*/
+.updateBtn 
+{
+    margin-top: 12px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background: blue;
+    display: none;
+}
+
+.updateBtn:focus
+{
+    border: 1px solid #fff;
+    border-radius: 4px;
+
+}
