@@ -36,12 +36,23 @@ body
 {
 	float: left;
 }
-.sub-title,
-.end-date
+
+.sub-title
+ 
 {
-	overflow: hidden;
+    overflow: hidden;
+    
 }
 
+.end-date 
+{
+    overflow: hidden;
+}
+
+.my-sub-title 
+{
+    width: 700px;
+}
 
 .start-date input[type="date"]
 {
@@ -164,6 +175,7 @@ p[for="sub-title"],p,label
 
 .total-count 
 {
+    width: 700px;
     border-bottom: 1px solid #9e9e9e69;
 }
 

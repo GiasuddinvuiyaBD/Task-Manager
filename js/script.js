@@ -17,14 +17,24 @@ let prorityArr = document.querySelectorAll('input[name="priority"]');
 let statusArr = document.querySelectorAll('input[name="status"]');
 // submit btn 
 const submitBtnElm = document.querySelector('form');
-
+// update button
 const updateBtnElm = document.querySelector('#submitBtn');
 
 
 
 // main data storage
 let dataBase = JSON.parse(localStorage.getItem('user-data')) || [];
-// console.log(dataBase)
+// 
+function totalTest(total)
+{
+	return total
+}
+let totalValues = totalTest(dataBase.length);
+console.log(totalValues);
+
+
+
+
 
 
 submitBtnElm.addEventListener('submit',(evt) => 
@@ -43,17 +53,24 @@ dynamicValue.addEventListener('click',(evt) =>
 	{
 		// finding uinque id
 		let id = finding_unique_id(evt);
+		// add deleting any key it will decrease 1
 		// remove item form database 
 		removeItemFromDataBase(id);
 		// remove item to ui
 		removeItemToUI(evt);
 		// remove item from localStorage
 		removeItemToLocalStorage(id)
-		
+
+		totalValues--;
+		console.log(totalValues)
+
+
+
 	}
 
 	if(evt.target.classList.contains('updated'))
 	{
+
 		// finding uinque id
 		let id = finding_unique_id(evt);
 		// getting unique value from database
@@ -65,7 +82,10 @@ dynamicValue.addEventListener('click',(evt) =>
 		// remove item from localStorage
 		removeItemToLocalStorage(id)
 	}
+
 });
+
+
 
 
 function init() 
@@ -97,6 +117,10 @@ function init()
 			priority,
 			status
 		});
+
+		// after adding new item it will increase 1
+		totalValues++;
+		// total++;
 		// set item to ui
 		setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,status);
 		// reset input field 
@@ -108,7 +132,10 @@ function init()
 		updateBtnElm.value = 'Submit'
 		updateBtnElm.style.backgroundColor = '#1a237e';
 
+		
+		// console.log(total)
 	}
+	
 }
 
 
@@ -245,7 +272,7 @@ function setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,s
 	let htmlTemplete = `
 				<div class="total-count">
 					<div class="total">
-						<p>Total : <span>20</span></p>
+						<p>Total : <span>${totalValues}</span></p>
 					</div>
 					<div class="new">
 						<p>New : <span>22</span></p>
@@ -256,7 +283,7 @@ function setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,s
 				</div>
 				
 				
-				<div class="sub-title">
+				<div class="sub-title my-sub-title">
 					<div class="unique-id">
 						<p>ID</p>
 					</div>
@@ -276,6 +303,9 @@ function setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,s
 						<p>Assigned To</p>
 					</div>
 					<div class="actions">
+						<p>Sub-Title</p>
+					</div>
+					<div class="actions">
 						<p>Action</p>
 					</div>
 				</div>
@@ -288,11 +318,11 @@ function setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,s
 					<div class="my-last-testing">
 						<span id="unique-id">${id}</span>
 						<span id="titleValues">${title}</span>
-						<span id="subtitleValues">${subTitle}</span>
 						<span id="statusValues">${priority}</span>
 						<span id="prograssValues">${status}</span>
 						<span id="dateValues">${endDate}</span>
 						<span id="assingValues">${name}</span>
+						<span id="subtitleValues">${subTitle}</span>
 						<span id="icons">
 							<i class="fa-sharp fa-solid fa-pen-to-square updated"></i>
 							<i class="fa-solid fa-square-check check-mark"></i>
@@ -323,7 +353,7 @@ function show(storageData)
 			let htmlTemplete = `
 				<div class="total-count">
 					<div class="total">
-						<p>Total : <span>20</span></p>
+						<p>Total : <span>${totalValues}</span></p>
 					</div>
 					<div class="new">
 						<p>New : <span>22</span></p>
@@ -332,9 +362,7 @@ function show(storageData)
 						<p>In Prograss : <span>2</span></p>
 					</div>
 				</div>
-				
-				
-				<div class="sub-title">
+				<div class="sub-title my-sub-title">
 					<div class="unique-id">
 						<p>ID</p>
 					</div>
@@ -354,6 +382,9 @@ function show(storageData)
 						<p>Assigned To</p>
 					</div>
 					<div class="actions">
+						<p>Sub-Title</p>
+					</div>
+					<div class="actions">
 						<p>Action</p>
 					</div>
 				</div>
@@ -366,11 +397,11 @@ function show(storageData)
 					<div class="my-last-testing">
 						<span id="unique-id">${data.id}</span>
 						<span id="titleValues">${data.title}</span>
-						<span id="subtitleValues">${data.subTitle}</span>
 						<span id="statusValues">${data.priority}</span>
 						<span id="prograssValues">${data.status}</span>
 						<span id="dateValues">${data.endDate}</span>
 						<span id="assingValues">${data.name}</span>
+						<span id="subtitleValues">${data.subTitle}</span>
 						<span id="icons">
 							<i class="fa-sharp fa-solid fa-pen-to-square updated"></i>
 							<i class="fa-solid fa-square-check check-mark"></i>
