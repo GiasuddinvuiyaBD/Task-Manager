@@ -24,16 +24,32 @@ const updateBtnElm = document.querySelector('#submitBtn');
 
 // main data storage
 let dataBase = JSON.parse(localStorage.getItem('user-data')) || [];
-// 
-function totalTest(total)
-{
-	return total
-}
-let totalValues = totalTest(dataBase.length);
-console.log(totalValues);
+
+let total = dataBase.length;
+let showNew = 1;
 
 
+/*
+	function testingPrioritys(status__)
+	{
+		let status = false;
+		for(let i = 0; i < status__.length; i++)
+		{
+			// .value === 'New'
+			if(status__[i].checked)
+			{
+				// status = true;
+				// break;
+				console.log(status__[i].value === 'New')
+			}
+		}
+		return (status)
+	}
 
+let getResult = testingPrioritys(statusArr);
+console.log(getResult)
+
+*/
 
 
 
@@ -60,12 +76,7 @@ dynamicValue.addEventListener('click',(evt) =>
 		removeItemToUI(evt);
 		// remove item from localStorage
 		removeItemToLocalStorage(id)
-
-		totalValues--;
-		console.log(totalValues)
-
-
-
+		
 	}
 
 	if(evt.target.classList.contains('updated'))
@@ -86,14 +97,19 @@ dynamicValue.addEventListener('click',(evt) =>
 });
 
 
-
-
 function init() 
 {
 	// resiving value form input element
 	const [title,subTitle,name,startDate,endDate] = resiveInputValue();
 	// form validaatin  start here 
 	const [priority,status] = radioBtn();
+
+	let flag = 0;
+	let statusNum = Number(status === 'New');
+
+	
+	
+	
 	// form validation
 	const isError = validateForm(title,subTitle,name,startDate,endDate,priority,status);
 	// console.log(isError)
@@ -119,8 +135,8 @@ function init()
 		});
 
 		// after adding new item it will increase 1
-		totalValues++;
-		// total++;
+		// totalValues++;
+		total++;
 		// set item to ui
 		setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,status);
 		// reset input field 
@@ -272,7 +288,7 @@ function setItemToUI(uniquId,id,title,subTitle,name,startDate,endDate,priority,s
 	let htmlTemplete = `
 				<div class="total-count">
 					<div class="total">
-						<p>Total : <span>${totalValues}</span></p>
+						<p>Total : <span>${total}</span></p>
 					</div>
 					<div class="new">
 						<p>New : <span>22</span></p>
@@ -353,7 +369,7 @@ function show(storageData)
 			let htmlTemplete = `
 				<div class="total-count">
 					<div class="total">
-						<p>Total : <span>${totalValues}</span></p>
+						<p>Total : <span>${total}</span></p>
 					</div>
 					<div class="new">
 						<p>New : <span>22</span></p>
